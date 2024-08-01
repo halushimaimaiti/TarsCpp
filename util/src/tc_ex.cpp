@@ -59,8 +59,8 @@ const char* TC_Exception::what() const throw()
 void TC_Exception::getBacktrace()
 {
 #if TARGET_PLATFORM_LINUX
-    void * array[64];
-    int nSize = backtrace(array, 64);
+    void * array[64]; //void *: 表示一个通用指针类型，可以指向任何类型的数据。
+    int nSize = backtrace(array, 64);//获取当前调用的堆栈
     char ** symbols = backtrace_symbols(array, nSize);
 
     for (int i = 0; i < nSize; i++)
